@@ -7,11 +7,12 @@ def init_app(app):
     def home():
         return render_template('index.html')
     
-    @app.route('/apigames', methods=['GET', 'POST'])
+    @app.route('/apicharacters', methods=['GET'])
     def apicharacters():
-        url = 'https://dattebayo-api.onrender.com/characters'
+        page = request.args.get('page', 1)
+        url = f'https://dragonball-api.com/api/characters?page={page}'
         res = urllib.request.urlopen(url)
         data = res.read()
-        charjson = json.loads(data)
-        
+        charjson = json.loads(data) 
+
         return render_template('apicharacters.html', charjson=charjson)
