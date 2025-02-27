@@ -1,4 +1,12 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Bem vindo a homepage!</h1>
-<a href="{{url_for('apicharacters')}}">Personagens</a>
+<div class="containerHome">
+    <div class="divText">
+        <img src="{{url_for('static', filename='images/teste.png')}}" alt=""  style="width: 350px; object-fit: contain;">
+        <div class="divButtons">
+            <a href="#"></a><button type="button" class="button">Personagens</button></a>
+            <a href="#"></a><button type="button" class="button">Transformações</button></a>
+            <a href="{{url_for('apicharacters')}}"><button type="button" class="button">Dados API</button></a>
+        </div>
+    </div>
+</div>
 {% endblock content %}

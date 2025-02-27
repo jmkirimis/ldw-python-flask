@@ -1,45 +1,76 @@
-{% extends 'base.html' %} 
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="container">
-    <div class="row" style="gap: 20px; display: flex; justify-content: center; margin-top: 2%; margin-bottom: 2%;">
-        {% for char in charjson["items"] %}
-            <div class="card" style="width: 18rem;">
-                <img src="{{char.image}}" class="card-img-top" alt="Personagem" style="max-width: 250px; max-height: 250px; object-fit: contain;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ char.name }}</h5>
-                    <p class="card-text">Ki: {{ char.ki }}</p>
-                    <p class="card-text">Ki Máximo: {{ char.maxKi }}</p>
-                    <p class="card-text">Raça: {{ char.race }}</p>
-                    <a href="#" class="btn btn-primary">Ver Mais</a>
-                </div>
-            </div>
-        {% endfor %}
+  <div
+    class="row"
+    style="
+      gap: 70px;
+      display: flex;
+      justify-content: center;
+      margin-top: 2%;
+      margin-bottom: 2%;
+    "
+  >
+    {% for char in charjson["items"] %}
+    <div class="card" style="width: 18rem; background-color: #3e3e3e; padding: 0; border: none;">
+      <img
+        src="{{char.image}}"
+        class="card-img-top"
+        alt="Personagem"
+        style="background-color: white; max-width: 100%; max-height: 250px; object-fit: contain"
+      />
+      <div class="card-body" style="color: #fff;">
+        <h5 class="card-title" style="font-weight: bolder;">{{ char.name }}</h5>
+        <p class="card-text">
+          <span style="color: #ffd900; font-weight: bold">Ki</span> <br />{{
+          char.ki }}
+        </p>
+        <p class="card-text">
+          <span style="color: #ffd900; font-weight: bold">Ki Máximo</span>
+          <br />
+          {{ char.maxKi }}
+        </p>
+        <p class="card-text">
+          <span style="color: #ffd900; font-weight: bold">Raça</span> <br />{{
+          char.race }}
+        </p>
+      </div>
     </div>
+    {% endfor %}
+  </div>
 
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if charjson.meta.currentPage > 1 %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ charjson.meta.currentPage - 1 }}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo; Anterior</span>
-                    </a>
-                </li>
-            {% endif %}
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if charjson.meta.currentPage > 1 %}
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="?page={{ charjson.meta.currentPage - 1 }}"
+          aria-label="Previous"
+        >
+          <span aria-hidden="true">&laquo; Anterior</span>
+        </a>
+      </li>
+      {% endif %}
 
-        
-            <li class="page-item disabled">
-                <span class="page-link">Página {{ charjson.meta.currentPage }} de {{ charjson.meta.totalPages }}</span>
-            </li>
+      <li class="page-item disabled">
+        <span class="page-link"
+          >Página {{ charjson.meta.currentPage }} de {{ charjson.meta.totalPages
+          }}</span
+        >
+      </li>
 
-            {% if (charjson.meta.totalPages - charjson.meta.currentPage) > 0 %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ charjson.meta.currentPage + 1 }}" aria-label="Next">
-                        <span aria-hidden="true">Próxima &raquo;</span>
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-    
+      {% if (charjson.meta.totalPages - charjson.meta.currentPage) > 0 %}
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="?page={{ charjson.meta.currentPage + 1 }}"
+          aria-label="Next"
+        >
+          <span aria-hidden="true">Próxima &raquo;</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
 </div>
 {% endblock content %}

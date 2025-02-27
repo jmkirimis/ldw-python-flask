@@ -7,6 +7,10 @@ def init_app(app):
     def home():
         return render_template('index.html')
     
+    @app.route('/characters')
+    def characters():
+        return render_template('characters.html')
+    
     @app.route('/apicharacters', methods=['GET'])
     def apicharacters():
         page = request.args.get('page', 1)
