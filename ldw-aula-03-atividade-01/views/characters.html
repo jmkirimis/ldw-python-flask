@@ -1,8 +1,28 @@
 {% extends 'base.html' %} {% block content %}
-<div class="containerPersonagens">
-    <div class="divText">
-        <h1>Bem vindo ao site DBS Hub</h1>
-        <h5>Aqui você encontra tudo sobre os personagens de DragonBall Super.</h5>
-    </div>
+<div class="containerGeral containerPersonagens">
+  <h3 style="font-weight: bolder; color: #ffc800">Monte o seu Time</h3>
+  <form
+    action="{{url_for('characters')}}"
+    method="POST"
+    class="formTime"
+  >
+    <input
+      type="text"
+      class="form-control"
+      name="personagem"
+      placeholder="Digite o personagem"
+    />
+    <button class="btn btn-primary" type="submit" aria-expanded="false" style="font-weight: bold;">
+      Adicionar
+    </button>
+  </form>
+  <div class="card" style="width: 24rem">
+    <div class="card-header" style="font-weight: bold;">Personagens</div>
+    <ul class="list-group list-group-flush">
+      {% for p in personagens %}
+      <li class="list-group-item">{{p}}</li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 {% endblock content %}

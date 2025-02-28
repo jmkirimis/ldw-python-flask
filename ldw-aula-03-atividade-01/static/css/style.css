@@ -1,16 +1,30 @@
 body{
-    background-color: #ff6700 !important;
+    background-color: #606060 !important;
+}
+.containerGeral {
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .containerHome{
     background-image: url('../images/fundo.jpg');
-    background-size: cover;
-    background-color: rgba(0, 0, 0, 0.6);
-    background-blend-mode: darken;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
     justify-content: center; 
-    height: 90vh;
+    height: 87.5vh;
+}
+.containerPersonagens {
+    background-image: url('../images/fundo2.jpg');
+    padding: 20px; 
+    gap: 20px;
+    height: 87.5vh;
+}
+.containerPersonagensApi {
+    background-image: url('../images/fundo2.jpg');
+    padding: 20px; 
+    gap: 20px;
+    height: fit-content;
 }
 .divText{
     display: flex;
@@ -18,22 +32,30 @@ body{
     align-items: center;
     color: #fff;
 }
+.imgTitulo {
+    width: 350px; 
+    object-fit: contain;
+}
+.formTime {
+    display: flex; 
+    width: 24rem; 
+    gap: 20px
+}
 .divButtons{
     display: flex;
-    padding: 10px;
-    gap: 15px;
 }
-.button{
+.customButton{
     border: none;
     border-radius: 10px;
-    background-color: #ff6700;
+    background-color: #e00414;
     font-weight: 500;
     color: #fff;
     padding: 10px;
+    margin: 10px;
 }
-.card {
+.cardApi {
     transition: transform 0.3s ease-in-out;
 }
-.card:hover {
+.cardApi:hover {
     transform: scale(1.04);
 }

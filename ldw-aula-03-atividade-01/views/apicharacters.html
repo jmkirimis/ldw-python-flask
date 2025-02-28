@@ -1,17 +1,17 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
+<div class="containerGeral containerPersonagensApi">
+  <h3 style="font-weight: bolder; color: #ffc800">Personagens da API</h3>
   <div
     class="row"
     style="
       gap: 70px;
       display: flex;
       justify-content: center;
-      margin-top: 2%;
       margin-bottom: 2%;
     "
   >
     {% for char in charjson["items"] %}
-    <div class="card" style="width: 18rem; background-color: #3e3e3e; padding: 0; border: none;">
+    <div class="card cardApi" style="width: 18rem; background-color: #3e3e3e; padding: 0; border: none;">
       <img
         src="{{char.image}}"
         class="card-img-top"
@@ -21,16 +21,16 @@
       <div class="card-body" style="color: #fff;">
         <h5 class="card-title" style="font-weight: bolder;">{{ char.name }}</h5>
         <p class="card-text">
-          <span style="color: #ffd900; font-weight: bold">Ki</span> <br />{{
+          <span style="color: #ffc800; font-weight: bold">Ki Base</span> <br />{{
           char.ki }}
         </p>
         <p class="card-text">
-          <span style="color: #ffd900; font-weight: bold">Ki Máximo</span>
+          <span style="color: #ffc800; font-weight: bold">Ki Máximo</span>
           <br />
           {{ char.maxKi }}
         </p>
         <p class="card-text">
-          <span style="color: #ffd900; font-weight: bold">Raça</span> <br />{{
+          <span style="color: #ffc800; font-weight: bold">Raça</span> <br />{{
           char.race }}
         </p>
       </div>

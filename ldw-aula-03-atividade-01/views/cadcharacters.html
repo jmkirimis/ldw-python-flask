@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block content %}
+<div class="containerGeral containerPersonagens">
+  <h3 style="font-weight: bolder; color: #ffc800">Adicione Personagens</h3>
+  <div style="display: flex; flex-direction: column; width: 80%; gap: 20px">
+    <form
+      action="{{url_for('cadcharacters')}}"
+      method="POST"
+      style="display: flex; gap: 20px"
+    >
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Digite o nome"
+      />
+      <input
+        type="number"
+        class="form-control"
+        name="ki"
+        placeholder="Digite o ki"
+      />
+      <input
+        type="number"
+        class="form-control"
+        name="maxki"
+        placeholder="Digite o ki máximo"
+      />
+      <input
+        type="text"
+        class="form-control"
+        name="race"
+        placeholder="Digite a raça"
+      />
+      <button type="submit" class="btn btn-primary" style="font-weight: bold;">Adicionar</button>
+    </form>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Ki Base</th>
+          <th scope="col">Ki Máximo</th>
+          <th scope="col">Raça</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for char in charList %}
+        <tr>
+          <th scope="row">{{ loop.index }}</th>
+          <td>{{char.name}}</td>
+          <td>{{char.ki | format_number}}</td>
+          <td>{{char.maxki | format_number}}</td>
+          <td>{{char.race}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}
