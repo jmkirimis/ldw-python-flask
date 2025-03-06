@@ -5,7 +5,7 @@
     <form
       action="{{url_for('cadcharacters')}}"
       method="POST"
-      style="display: flex; gap: 20px"
+      class="formCadChar"
     >
       <input
         type="text"
@@ -31,7 +31,9 @@
         name="race"
         placeholder="Digite a raça"
       />
-      <button type="submit" class="btn btn-primary" style="font-weight: bold;">Adicionar</button>
+      <button type="submit" class="btn btn-primary" style="font-weight: bold">
+        Adicionar
+      </button>
     </form>
     <table class="table table-bordered">
       <thead>

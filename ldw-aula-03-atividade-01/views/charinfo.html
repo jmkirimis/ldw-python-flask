@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+<div class="containerGeral containerPersonagensInfo">
+  <div class="divCharInfo bg-body-tertiary">
+    <div style="display: flex; flex-direction: column">
+      <i
+        class="bi bi-arrow-left-circle-fill fs-4"
+        style="color: #3e3e3e; cursor: pointer"
+        onclick="goBack()"
+      ></i>
+      <div style="display: flex; width: 100%; justify-content: center">
+        <img
+          src="{{charinfo[0].image}}"
+          alt="Imagem de: {{charinfo[0].name}}"
+          style="width: 250px; height: 25rem; object-fit: contain"
+        />
+      </div>
+    </div>
+    <div
+      style="display: flex; flex-direction: column; gap: 10px; color: #3e3e3e"
+    >
+      <span style="font-weight: bold; font-size: x-large"
+        >{{charinfo[0].name}}</span
+      >
+      <span><span style="font-weight: bold">Ki: </span>{{charinfo[0].ki}}</span>
+      <span
+        ><span style="font-weight: bold">Ki Máximo: </span
+        >{{charinfo[0].maxKi}}</span
+      >
+      <span
+        ><span style="font-weight: bold">Raça: </span>{{charinfo[0].race}}</span
+      >
+      <span
+        ><span style="font-weight: bold">Gênero: </span
+        >{{charinfo[0].gender}}</span
+      >
+      <span
+        ><span style="font-weight: bold">Afiliação: </span
+        >{{charinfo[0].affiliation}}</span
+      >
+      <span>{{ charinfo[0].description }}</span>
+    </div>
+  </div>
+</div>
+<script>
+  function goBack() {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = "{{url_for('apicharacters')}}";
+    }
+  }
+</script>
+{% endblock content %}
