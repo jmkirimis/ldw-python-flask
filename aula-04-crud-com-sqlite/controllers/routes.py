@@ -86,9 +86,20 @@ def init_app(app):
             db.session.add(newgame)
             db.session.commit()
             return redirect(url_for('estoque'))
-        # Método do SQLAlchemy que faz um select geral no banco na tabela Games
-        gamesestoque = Game.query.all()
-        return render_template('estoque.html', gamesestoque=gamesestoque)
+        
+        else:
+            # Paginação
+            # A variável abaixo captura o valor de 'page' que foi passado pelo método GET. E define como padrão o valor 1 e o tipo inteiro
+            page = request.args.get('page', 1, type=int)
+            # Valor padrão de registros por página
+            per_page = 5
+            # Abaixo está sendo feito um select no banco a partir da página informada (page) e filtrando os registros de 5 em 5 (per_page)
+            games_page = Game.query.paginate(page=page, per_page=per_page)
+            return render_template('estoque.html', gamesestoque=games_page)
+            
+            # Método do SQLAlchemy que faz um select geral no banco na tabela Games
+            # gamesestoque = Game.query.all()
+            # return render_template('estoque.html', gamesestoque=gamesestoque)
 
     # Rota de edição
     @app.route('/edit/<int:id>', methods=['GET', 'POST'])
