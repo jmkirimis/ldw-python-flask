@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+<div class="containerGeral containerPersonagens">
+  <h3 style="font-weight: bolder; color: #ffc800">Adicione Personagens</h3>
+  <div style="display: flex; flex-direction: column; width: 80%; gap: 20px">
+    <form
+      action="{{url_for('cadcharacters')}}"
+      method="POST"
+      class="formCadChar"
+    >
+      <input
+        type="text"
+        class="form-control"
+        name="nome"
+        placeholder="Digite o nome"
+      />
+      <input
+        type="number"
+        class="form-control"
+        name="ki"
+        placeholder="Digite o ki"
+      />
+      <input
+        type="text"
+        class="form-control"
+        name="kiMax"
+        placeholder="Digite o ki máximo"
+      />
+      <input
+        type="text"
+        class="form-control"
+        name="raca"
+        placeholder="Digite a raça"
+      />
+      <button type="submit" class="btn btn-primary" style="font-weight: bold">
+        Adicionar
+      </button>
+    </form>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Ki Base</th>
+          <th scope="col">Ki Máximo</th>
+          <th scope="col">Raça</th>
+          <th colspan="2" style="text-align: center;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for char in characters_page %}
+        <tr>
+          <th scope="row">{{ loop.index }}</th>
+          <td>{{char.nome}}</td>
+          <td>{{char.ki | format_number}}</td>
+          <td>{{char.kiMax | format_number}}</td>
+          <td>{{char.raca}}</td>
+          <td><a style="color: orange; text-decoration: none;" href="{{url_for('edit', id=char.id)}}">Editar</a></td>
+          <td><a style="color: red; text-decoration: none;" href="{{url_for('cadcharacters', id=char.id)}}" onclick="return confirm('Deseja mesmo excluir o jogo {{char.nome}}?')">Excluir</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <!-- Links da paginação -->
+    <p style="display: flex; justify-content: center; gap: 15px;">
+      <!-- Se houver registros anteriores -->
+       {% if characters_page.has_prev %}
+       <a href="{{url_for('cadcharacters', page=characters_page.prev_num)}}"><input type="button" class="btn btn-secondary" value="<< Anterior"></a>
+       {% endif %}
+
+      <!-- Se houver próximos registros -->
+      {% if characters_page.has_next %}
+      <a href="{{url_for('cadcharacters', page=characters_page.next_num)}}"><input type="button" class="btn btn-primary" value="Próximo >>"></a>
+      {% endif %}
+
+  </p>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<div class="containerGeral containerHome">
+  <div class="divText">
+    <img
+      src="{{url_for('static', filename='images/teste.png')}}"
+      alt=""
+      class="imgTitulo"
+    />
+    <div class="divButtonsIndex">
+      <a href="{{url_for('characters')}}"
+        ><button type="button" class="customButton">Personagens</button></a
+      >
+      <a href="{{url_for('cadcharacters')}}"
+        ><button type="button" class="customButton">
+          Adicionar Personagens
+        </button></a
+      >
+      <a href="{{url_for('apicharacters')}}"
+        ><button type="button" class="customButton">
+          Personagens da API
+        </button></a
+      >
+    </div>
+  </div>
+</div>
+{% endblock content %}

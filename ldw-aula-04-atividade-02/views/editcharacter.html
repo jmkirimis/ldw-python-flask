@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="containerGeral containerPersonagens">
+    <h3 style="font-weight: bolder; color: #ffc800">Editar Personagem</h3>
+    <div class="divEditChar">
+        <form action="{{url_for('edit', id=character.id)}}" method="POST" class="formEditChar">
+            <input type="text" name="nome" placeholder="Nome" class="form-control" value="{{character.nome}}" required>
+            <input type="number" name="ki" placeholder="Ki" class="form-control" value="{{character.ki}}" required>
+            <input type="text" name="kiMax" placeholder="kiMax" class="form-control" value="{{character.kiMax}}" required>
+            <input type="text" name="raca" placeholder="Raça" class="form-control" value="{{character.raca}}" required>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <input type="submit" value="Alterar" class="btn btn-warning" onclick="return confirm('Confirma as alterações?')">
+                <a href="{{url_for('cadcharacters')}}"><input type="button" value="Cancelar" class="btn btn-danger"></a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
