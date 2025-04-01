@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session
 # Importando o model
 from models.database import db, Game, Usuario
 # Importando biblioteca para Hash de Senha
@@ -21,6 +21,20 @@ gameList = [
 jogadores = []
 
 def init_app(app):
+    # Função de middleware para verificar a autenticação do usuário
+    @app.before_request
+    def check_auth():
+        # Rotas que não precisam de autenticação
+        routes = ['login', 'caduser', 'home']
+        
+        # Se a rota atual não requer autenticação, permite o acesso
+        if request.endpoint in routes or request.path.startswith('/static/'):
+            return
+        
+        # Se o usuário não estiver autenticado, retorna para a página de login
+        if 'user_id' not in session:
+            return redirect(url_for('login'))
+        
     @app.route('/')
     # View function -> função de visualização
     def home():
@@ -124,7 +138,31 @@ def init_app(app):
     # Rota de login
     @app.route('/login', methods=['GET', 'POST'])
     def login():
+        if request.method == "POST":
+            email = request.form['email']
+            password = request.form['password']
+            
+            # Buscando o usuário no banco
+            user = Usuario.query.filter_by(email=email).first()
+            
+            # Login bem sucedido
+            if user and check_password_hash(user.password, password):
+                session['user_id'] = user.id
+                session['email'] = user.email
+                nickname = user.email.split('@')
+                flash(f'Login bem sucedido! Bem vindo {nickname[0]}!', 'success')
+                return redirect(url_for('home'))
+            else:
+                flash('Falha no login. Verifique seu nome de usuário e senha.', 'danger')
+            
         return render_template('login.html')
+    
+    # Rota de lout
+    @app.route('/logout', methods=['GET', 'POST'])
+    def logout():
+        # Destruindo a sessão do usuário
+        session.clear()
+        return redirect(url_for('home'))
     
     # Rota de cadastro
     @app.route('/caduser', methods=['GET', 'POST'])
