@@ -1,20 +1,36 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<div class="container col-4">
-    <div class="card mt-4">
-        <div class="card-body m-auto">
-            <form action="{{url_for('login')}}" method="POST">
-                <label>Email: </label>
-                <input type="email" name="email" class="form-control" placeholder="email@exemplo.com">
-                <label>Senha: </label>
-                <input type="password" name="password" class="form-control" placeholder="Insira a sua senha">
-                <br>
-                <button type="submit" class="btn btn-danger">Entrar</button>
-            </form>
-            <hr>
-            <h6>Não possui conta? <a href="{{url_for('caduser')}}">Cadastre-se!</a></h6>
-        </div>
+<div class="containerLogin">
+  <div class="card cardLogin">
+    <img
+      src="{{url_for('static', filename='images/logo-com-texto-2.png')}}"
+      alt="Logo com texto"
+      class="logoLogin"
+    />
+    <div class="card-body m-auto">
+      <form action="{{url_for('login')}}" method="POST">
+        <label>Email: </label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="email@exemplo.com"
+        />
+        <label>Senha: </label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Insira a sua senha"
+        />
+        <br />
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+      <hr />
+      <h6>
+        Não possui conta? <a href="{{url_for('caduser')}}">Cadastre-se!</a>
+      </h6>
     </div>
+  </div>
 </div>
 {% endblock content %}

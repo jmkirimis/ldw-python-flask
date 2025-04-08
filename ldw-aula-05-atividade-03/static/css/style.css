@@ -1,0 +1,102 @@
+.containerGeral {
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerHome {
+    background-image: url('../images/fundo.jpg');
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    padding-top: 7.7rem;
+    padding-bottom: 7.7rem;
+}
+.logoHome {
+    width: 40vw; 
+    height: 30vh;
+    margin-right: 4rem;
+}
+.containerGaleria {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+.containerImgs {
+    display: flex; 
+    width: 90%; 
+    gap: 2rem; 
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+.containerLogin {
+    padding-left: 32vw;
+    padding-right: 32vw;
+}
+.cardLogin {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+.logoLogin {
+    width: 20vw; 
+    height: 15vh; 
+    margin-top: 1.5rem; 
+    margin-right: 1.5rem
+}
+
+@media screen and (max-width: 1024px) {
+    .containerHome {
+        padding-top: 20rem;
+        padding-bottom: 20rem;
+    }
+    .logoHome {
+        width: 50vw; 
+        height: 20vh;
+        margin-right: 4rem;
+    }
+    .containerUploads {
+        width: 60% !important;
+    }
+    .containerLogin {
+        padding-left: 18vw;
+        padding-right: 18vw;
+    }
+    .logoLogin {
+        width: 36vw; 
+        height: 8vh; 
+        margin-top: 1.5rem; 
+        margin-right: 1.5rem
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .containerHome {
+        padding-top: 19.5rem;
+        padding-bottom: 19.5rem;
+    }
+    .logoHome {
+        width: 60vw; 
+        height: 10vh;
+        margin-right: 1rem;
+    }
+    .containerUploads {
+        width: 100% !important;
+    }
+    .logoLogin {
+        width: 50vw; 
+        height: 10vh; 
+        margin-top: 1.5rem; 
+        margin-right: 1.5rem
+    }
+}

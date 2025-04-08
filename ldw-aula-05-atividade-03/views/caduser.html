@@ -1,11 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="container">
-  <div class="card mt-4">
-    <div class="card-header">
-      <h2>Cadastro de Usuário</h2>
-    </div>
-    <div class="card-body">
+<div class="containerLogin">
+  <div class="card cardLogin">
+    <img
+      src="{{url_for('static', filename='images/logo-com-texto-2.png')}}"
+      alt="Logo com texto"
+      class="logoLogin"
+    />
+    <div class="card-body m-auto">
       <form action="{{url_for('caduser')}}" method="POST">
         <label>Email: </label>
         <input
@@ -19,11 +21,15 @@
           type="password"
           name="password"
           class="form-control"
-          placeholder="Insira uma senha de no mínimo 8 caracteres"
+          placeholder="Insira a sua senha"
         />
         <br />
-        <button type="submit" class="btn btn-danger">Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
       </form>
+      <hr />
+      <h6>
+        Já possui uma conta? <a href="{{url_for('login')}}">Entre aqui!</a>
+      </h6>
     </div>
   </div>
 </div>
